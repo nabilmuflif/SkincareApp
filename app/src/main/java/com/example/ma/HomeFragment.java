@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout; // Import LinearLayout
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,7 +28,9 @@ import java.util.concurrent.Executors;
 public class HomeFragment extends Fragment {
 
     private EditText etSearch;
-    private Button btnSearch, btnDecodeIngredients, btnAddIngredient, btnAddSkincare;
+    // Tipe data btnAddIngredient dan btnAddSkincare diubah
+    private View btnAddIngredient, btnAddSkincare;
+    private Button btnSearch, btnDecodeIngredients;
     private RecyclerView rvProducts, rvIngredients;
     private ProgressBar progressBar;
     private TextView tvRecentProductsTitle, tvIngredientsTitle;
@@ -56,16 +59,10 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        // 1. Inisialisasi semua view
         initializeViews(view);
-        // 2. Setup RecyclerView
         setupRecyclerViews();
-        // 3. BUAT ADAPTER TERLEBIH DAHULU
         setupAdapters();
-        // 4. Setup listener untuk tombol
         setupClickListeners();
-        // 5. BARU AMBIL DATA
         loadRecentProducts();
     }
 
@@ -73,6 +70,7 @@ public class HomeFragment extends Fragment {
         etSearch = view.findViewById(R.id.etSearch);
         btnSearch = view.findViewById(R.id.btnSearch);
         btnDecodeIngredients = view.findViewById(R.id.btnDecodeIngredients);
+        // ID yang dipanggil sudah benar, tidak perlu diubah, hanya tipe variabelnya
         btnAddIngredient = view.findViewById(R.id.btnAddIngredient);
         btnAddSkincare = view.findViewById(R.id.btnAddSkincare);
         rvProducts = view.findViewById(R.id.rvProducts);
@@ -90,7 +88,6 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupAdapters() {
-        // Buat instance ProductAdapter dengan list kosong
         productAdapter = new ProductAdapter(productList, new ProductAdapter.OnProductClickListener() {
             @Override
             public void onProductClick(Product product) {
@@ -109,7 +106,6 @@ public class HomeFragment extends Fragment {
         });
         rvProducts.setAdapter(productAdapter);
 
-        // Buat instance IngredientAdapter dengan list kosong
         ingredientAdapter = new IngredientAdapter(ingredientList, new IngredientAdapter.OnIngredientClickListener() {
             @Override
             public void onIngredientClick(Ingredient ingredient) {
@@ -133,6 +129,7 @@ public class HomeFragment extends Fragment {
             Intent intent = new Intent(getActivity(), DecodeIngredientsActivity.class);
             startActivity(intent);
         });
+        // Listener untuk LinearLayout yang sekarang disimpan dalam variabel View
         btnAddSkincare.setOnClickListener(v -> {
             startActivity(new Intent(getActivity(), AddProductActivity.class));
         });
@@ -188,7 +185,7 @@ public class HomeFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     productList.clear();
                     productList.addAll(recentProducts);
-                    productAdapter.notifyDataSetChanged(); // SEKARANG AMAN, KARENA ADAPTER SUDAH DIBUAT
+                    productAdapter.notifyDataSetChanged();
                     showLoading(false);
                 });
             }
