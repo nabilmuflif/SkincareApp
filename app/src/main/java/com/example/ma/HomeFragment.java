@@ -31,6 +31,8 @@ public class HomeFragment extends Fragment {
     private RecyclerView rvProducts, rvIngredients;
     private ProgressBar progressBar;
     private TextView tvRecentProductsTitle, tvIngredientsTitle;
+    private Button btnAddIngredient;
+    private Button btnAddSkincare;
 
     private DatabaseHelper dbHelper;
     private ProductAdapter productAdapter;
@@ -60,6 +62,29 @@ public class HomeFragment extends Fragment {
         loadRecentProducts();
 
         return view;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // ... (inisialisasi variabel yang sudah ada)
+
+        // Inisialisasi tombol baru
+        btnAddIngredient = view.findViewById(R.id.btnAddIngredient);
+        btnAddSkincare = view.findViewById(R.id.btnAddSkincare);
+
+        // ... (listener untuk tombol search dan decode)
+
+        // Listener untuk tombol "Tambah Bahan"
+        btnAddIngredient.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "Fitur 'Tambah Bahan' akan segera hadir!", Toast.LENGTH_SHORT).show();
+        });
+
+        // Listener untuk tombol "Tambah Skincare"
+        btnAddSkincare.setOnClickListener(v -> {
+            Toast.makeText(getContext(), "Fitur 'Tambah Skincare' akan segera hadir!", Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void initializeViews(View view) {
