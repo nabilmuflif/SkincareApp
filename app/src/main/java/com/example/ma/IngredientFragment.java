@@ -52,16 +52,28 @@ public class IngredientFragment extends Fragment {
             List<Ingredient> allIngredients = dbHelper.getAllIngredients();
             if (getActivity() != null) {
                 getActivity().runOnUiThread(() -> {
-                    ingredientAdapter = new IngredientAdapter(allIngredients, this::onIngredientClick);
+                    // IMPLEMENTASI LISTENER YANG BENAR
+                    ingredientAdapter = new IngredientAdapter(allIngredients, new IngredientAdapter.OnIngredientClickListener() {
+                        @Override
+                        public void onIngredientClick(Ingredient ingredient) {
+                            // Aksi saat item di-klik
+                            showIngredientDetailDialog(ingredient);
+                        }
+
+                        @Override
+                        public void onFavoriteClick(Ingredient ingredient, int position) {
+                            // Aksi saat tombol favorit di-klik
+                            boolean newStatus = !ingredient.isFavorite();
+                            dbHelper.setIngredientFavorite(ingredient.getId(), newStatus);
+                            ingredient.setFavorite(newStatus);
+                            ingredientAdapter.notifyItemChanged(position); // Update tampilan item
+                        }
+                    });
                     rvAllIngredients.setAdapter(ingredientAdapter);
                     showLoading(false);
                 });
             }
         });
-    }
-
-    private void onIngredientClick(Ingredient ingredient) {
-        showIngredientDetailDialog(ingredient);
     }
 
     private void showIngredientDetailDialog(Ingredient ingredient) {
@@ -86,7 +98,8 @@ public class IngredientFragment extends Fragment {
 
         int color = ingredient.getRatingColor();
         vRatingBadge.setBackgroundColor(color);
-        tvRating.setTextColor(android.graphics.Color.WHITE);
+        // Anda mungkin ingin mengubah warna teks rating di sini juga jika perlu
+        // tvRating.setTextColor(Color.WHITE);
 
         builder.setView(dialogView)
                 .setPositiveButton(getString(R.string.close), null)

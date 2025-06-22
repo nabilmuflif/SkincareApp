@@ -48,11 +48,26 @@ public class SkincareFragment extends Fragment {
     private void loadAllProducts() {
         showLoading(true);
         executorService.execute(() -> {
-            // Anda perlu menambahkan method getAllProducts() di DatabaseHelper
             List<Product> allProducts = dbHelper.getAllProducts();
             if (getActivity() != null) {
                 getActivity().runOnUiThread(() -> {
-                    productAdapter = new ProductAdapter(allProducts, this::onProductClick);
+                    productAdapter = new ProductAdapter(allProducts, new ProductAdapter.OnProductClickListener() {
+                        @Override
+                        public void onProductClick(Product product) {
+                            // Kode yang sudah ada untuk membuka detail
+                            Intent intent = new Intent(getActivity(), DecodeIngredientsActivity.class);
+                            intent.putExtra("ingredients", product.getIngredients());
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onFavoriteClick(Product product, int position) {
+                            boolean newStatus = !product.isFavorite();
+                            dbHelper.setProductFavorite(product.getId(), newStatus);
+                            product.setFavorite(newStatus);
+                            productAdapter.notifyItemChanged(position);
+                        }
+                    });
                     rvAllProducts.setAdapter(productAdapter);
                     showLoading(false);
                 });

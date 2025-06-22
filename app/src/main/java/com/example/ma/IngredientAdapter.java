@@ -3,6 +3,7 @@ package com.example.ma;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,8 +14,10 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     private final List<Ingredient> ingredients;
     private final OnIngredientClickListener listener;
 
+    // INTERFACE DIPERBARUI: Tambahkan onFavoriteClick
     public interface OnIngredientClickListener {
         void onIngredientClick(Ingredient ingredient);
+        void onFavoriteClick(Ingredient ingredient, int position);
     }
 
     public IngredientAdapter(List<Ingredient> ingredients, OnIngredientClickListener listener) {
@@ -33,7 +36,7 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     @Override
     public void onBindViewHolder(@NonNull IngredientViewHolder holder, int position) {
         Ingredient ingredient = ingredients.get(position);
-        holder.bind(ingredient, listener);
+        holder.bind(ingredient, listener, position);
     }
 
     @Override
@@ -42,31 +45,27 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
     }
 
     static class IngredientViewHolder extends RecyclerView.ViewHolder {
-        // Deklarasikan view sesuai dengan ID di layout XML yang baru
         private final TextView tvIngredientName;
         private final TextView tvWhatItDoes;
         private final View vRatingIndicator;
+        private ImageButton btnFavorite; // Tambahkan ImageButton
 
         public IngredientViewHolder(@NonNull View itemView) {
             super(itemView);
-            // Inisialisasi view menggunakan ID yang benar
             tvIngredientName = itemView.findViewById(R.id.tv_ingredient_name);
             tvWhatItDoes = itemView.findViewById(R.id.tv_ingredient_function);
             vRatingIndicator = itemView.findViewById(R.id.v_rating_indicator);
+            btnFavorite = itemView.findViewById(R.id.btnFavoriteIngredient); // Pastikan ID ini ada di XML
         }
 
-        public void bind(Ingredient ingredient, final OnIngredientClickListener listener) {
-            // Cek null untuk keamanan, meskipun seharusnya tidak terjadi jika layout benar
-            if (tvIngredientName != null) {
-                tvIngredientName.setText(ingredient.getName());
-            }
-            if (tvWhatItDoes != null) {
-                tvWhatItDoes.setText(ingredient.getWhatItDoes());
-            }
+        public void bind(final Ingredient ingredient, final OnIngredientClickListener listener, final int position) {
+            tvIngredientName.setText(ingredient.getName());
+            tvWhatItDoes.setText(ingredient.getWhatItDoes());
+            vRatingIndicator.setBackgroundColor(ingredient.getRatingColor());
 
-            // Atur warna indikator berdasarkan rating
-            if (vRatingIndicator != null) {
-                vRatingIndicator.setBackgroundColor(ingredient.getRatingColor());
+            // Set status favorit dari data model
+            if (btnFavorite != null) {
+                btnFavorite.setSelected(ingredient.isFavorite());
             }
 
             itemView.setOnClickListener(v -> {
@@ -74,6 +73,15 @@ public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.In
                     listener.onIngredientClick(ingredient);
                 }
             });
+
+            // Listener untuk tombol favorit
+            if (btnFavorite != null) {
+                btnFavorite.setOnClickListener(v -> {
+                    if (listener != null) {
+                        listener.onFavoriteClick(ingredient, position);
+                    }
+                });
+            }
         }
     }
 }

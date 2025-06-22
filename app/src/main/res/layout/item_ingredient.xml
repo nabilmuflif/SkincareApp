@@ -4,12 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    app:cardCornerRadius="12dp"
-    app:cardElevation="2dp">
+    android:layout_marginVertical="4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,8 +18,7 @@
             android:background="@color/primary_light"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginEnd="16dp"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_ingredient_name"
@@ -35,7 +29,7 @@
             android:textColor="@color/text_primary"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnFavoriteIngredient"
             app:layout_constraintStart_toEndOf="@id/v_rating_indicator"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,12 +38,23 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             tools:text="What it does for your skin"
-            android:textSize="14sp"
             android:textColor="@color/text_secondary"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            app:layout_constraintEnd_toEndOf="@id/tv_ingredient_name"
             app:layout_constraintStart_toStartOf="@id/tv_ingredient_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_ingredient_name"
-            android:layout_marginTop="4dp"/>
+            app:layout_constraintTop_toBottomOf="@id/tv_ingredient_name" />
+
+        <ImageButton
+            android:id="@+id/btnFavoriteIngredient"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_star_selector"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Toggle Favorite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

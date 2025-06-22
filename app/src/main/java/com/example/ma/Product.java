@@ -1,8 +1,5 @@
 package com.example.ma;
 
-import java.util.List;
-
-// Model untuk Product
 public class Product {
     private int id;
     private String name;
@@ -10,6 +7,7 @@ public class Product {
     private String ingredients;
     private String category;
     private long createdAt;
+    private boolean isFavorite; // BARU
 
     public Product() {}
 
@@ -19,6 +17,7 @@ public class Product {
         this.ingredients = ingredients;
         this.category = category;
         this.createdAt = System.currentTimeMillis();
+        this.isFavorite = false;
     }
 
     // Getters and Setters
@@ -39,4 +38,8 @@ public class Product {
 
     public long getCreatedAt() { return createdAt; }
     public void setCreatedAt(long createdAt) { this.createdAt = createdAt; }
+
+    // GETTER & SETTER BARU
+    public boolean isFavorite() { return isFavorite; }
+    public void setFavorite(boolean favorite) { isFavorite = favorite; }
 }

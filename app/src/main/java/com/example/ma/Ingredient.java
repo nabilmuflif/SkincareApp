@@ -4,13 +4,15 @@ public class Ingredient {
     private int id;
     private String name;
     private String commonName;
-    private String rating; // "superstar", "goodie", "no-take", "neutral"
+    private String rating;
     private String whatItDoes;
     private String description;
     private String irritancyLevel;
     private String sources;
+    private boolean isFavorite;
 
     public Ingredient() {
+        // Diperlukan konstruktor kosong
     }
 
     public Ingredient(String name, String commonName, String rating, String whatItDoes,
@@ -21,10 +23,11 @@ public class Ingredient {
         this.whatItDoes = whatItDoes;
         this.description = description;
         this.irritancyLevel = irritancyLevel;
+        this.isFavorite = false;
     }
 
+    // --- GETTERS DAN SETTERS (INI YANG MEMPERBAIKI ERROR) ---
 
-    // Getters and Setters
     public int getId() {
         return id;
     }
@@ -89,9 +92,20 @@ public class Ingredient {
         this.sources = sources;
     }
 
-    // Helper method untuk mendapatkan warna rating
-// Update getRatingColor method di Ingredient.java
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        isFavorite = favorite;
+    }
+
+    // --- METODE HELPER ---
+
     public int getRatingColor() {
+        if (rating == null) {
+            return Constants.COLOR_NEUTRAL;
+        }
         switch (rating.toLowerCase()) {
             case Constants.RATING_SUPERSTAR:
                 return Constants.COLOR_SUPERSTAR;

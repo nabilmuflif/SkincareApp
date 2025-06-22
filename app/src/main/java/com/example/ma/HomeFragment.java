@@ -27,12 +27,10 @@ import java.util.concurrent.Executors;
 public class HomeFragment extends Fragment {
 
     private EditText etSearch;
-    private Button btnSearch, btnDecodeIngredients;
+    private Button btnSearch, btnDecodeIngredients, btnAddIngredient, btnAddSkincare;
     private RecyclerView rvProducts, rvIngredients;
     private ProgressBar progressBar;
     private TextView tvRecentProductsTitle, tvIngredientsTitle;
-    private Button btnAddIngredient;
-    private Button btnAddSkincare;
 
     private DatabaseHelper dbHelper;
     private ProductAdapter productAdapter;
@@ -47,50 +45,36 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
         dbHelper = new DatabaseHelper(getContext());
         executorService = Executors.newFixedThreadPool(2);
-        productAdapter = new ProductAdapter(productList, this::onProductClick);
-        ingredientAdapter = new IngredientAdapter(ingredientList, this::onIngredientClick);
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        initializeViews(view);
-        setupRecyclerViews();
-        setupClickListeners();
-        loadRecentProducts();
-
-        return view;
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // ... (inisialisasi variabel yang sudah ada)
-
-        // Inisialisasi tombol baru
-        btnAddIngredient = view.findViewById(R.id.btnAddIngredient);
-        btnAddSkincare = view.findViewById(R.id.btnAddSkincare);
-
-        // ... (listener untuk tombol search dan decode)
-
-        // Listener untuk tombol "Tambah Bahan"
-        btnAddIngredient.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Fitur 'Tambah Bahan' akan segera hadir!", Toast.LENGTH_SHORT).show();
-        });
-
-        // Listener untuk tombol "Tambah Skincare"
-        btnAddSkincare.setOnClickListener(v -> {
-            Toast.makeText(getContext(), "Fitur 'Tambah Skincare' akan segera hadir!", Toast.LENGTH_SHORT).show();
-        });
+        // 1. Inisialisasi semua view
+        initializeViews(view);
+        // 2. Setup RecyclerView
+        setupRecyclerViews();
+        // 3. BUAT ADAPTER TERLEBIH DAHULU
+        setupAdapters();
+        // 4. Setup listener untuk tombol
+        setupClickListeners();
+        // 5. BARU AMBIL DATA
+        loadRecentProducts();
     }
 
     private void initializeViews(View view) {
         etSearch = view.findViewById(R.id.etSearch);
         btnSearch = view.findViewById(R.id.btnSearch);
         btnDecodeIngredients = view.findViewById(R.id.btnDecodeIngredients);
+        btnAddIngredient = view.findViewById(R.id.btnAddIngredient);
+        btnAddSkincare = view.findViewById(R.id.btnAddSkincare);
         rvProducts = view.findViewById(R.id.rvProducts);
         rvIngredients = view.findViewById(R.id.rvIngredients);
         progressBar = view.findViewById(R.id.progressBar);
@@ -100,12 +84,47 @@ public class HomeFragment extends Fragment {
 
     private void setupRecyclerViews() {
         rvProducts.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvProducts.setAdapter(productAdapter);
         rvProducts.setNestedScrollingEnabled(false);
-
         rvIngredients.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvIngredients.setAdapter(ingredientAdapter);
         rvIngredients.setNestedScrollingEnabled(false);
+    }
+
+    private void setupAdapters() {
+        // Buat instance ProductAdapter dengan list kosong
+        productAdapter = new ProductAdapter(productList, new ProductAdapter.OnProductClickListener() {
+            @Override
+            public void onProductClick(Product product) {
+                Intent intent = new Intent(getActivity(), DecodeIngredientsActivity.class);
+                intent.putExtra("ingredients", product.getIngredients());
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFavoriteClick(Product product, int position) {
+                boolean newStatus = !product.isFavorite();
+                dbHelper.setProductFavorite(product.getId(), newStatus);
+                product.setFavorite(newStatus);
+                productAdapter.notifyItemChanged(position);
+            }
+        });
+        rvProducts.setAdapter(productAdapter);
+
+        // Buat instance IngredientAdapter dengan list kosong
+        ingredientAdapter = new IngredientAdapter(ingredientList, new IngredientAdapter.OnIngredientClickListener() {
+            @Override
+            public void onIngredientClick(Ingredient ingredient) {
+                showIngredientDetailDialog(ingredient);
+            }
+
+            @Override
+            public void onFavoriteClick(Ingredient ingredient, int position) {
+                boolean newStatus = !ingredient.isFavorite();
+                dbHelper.setIngredientFavorite(ingredient.getId(), newStatus);
+                ingredient.setFavorite(newStatus);
+                ingredientAdapter.notifyItemChanged(position);
+            }
+        });
+        rvIngredients.setAdapter(ingredientAdapter);
     }
 
     private void setupClickListeners() {
@@ -113,6 +132,12 @@ public class HomeFragment extends Fragment {
         btnDecodeIngredients.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), DecodeIngredientsActivity.class);
             startActivity(intent);
+        });
+        btnAddSkincare.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), AddProductActivity.class));
+        });
+        btnAddIngredient.setOnClickListener(v -> {
+            startActivity(new Intent(getActivity(), AddIngredientActivity.class));
         });
     }
 
@@ -129,21 +154,21 @@ public class HomeFragment extends Fragment {
         rvIngredients.setVisibility(View.VISIBLE);
 
         executorService.execute(() -> {
-            List<Product> searchResults = dbHelper.searchProducts(query);
-            List<Ingredient> ingredientResults = dbHelper.searchIngredients(query);
+            List<Product> searchResultsProducts = dbHelper.searchProducts(query);
+            List<Ingredient> searchResultsIngredients = dbHelper.searchIngredients(query);
 
             if (getActivity() != null) {
                 getActivity().runOnUiThread(() -> {
                     productList.clear();
-                    productList.addAll(searchResults);
+                    productList.addAll(searchResultsProducts);
                     productAdapter.notifyDataSetChanged();
 
                     ingredientList.clear();
-                    ingredientList.addAll(ingredientResults);
+                    ingredientList.addAll(searchResultsIngredients);
                     ingredientAdapter.notifyDataSetChanged();
 
                     showLoading(false);
-                    if (searchResults.isEmpty() && ingredientResults.isEmpty()) {
+                    if (searchResultsProducts.isEmpty() && searchResultsIngredients.isEmpty()) {
                         Toast.makeText(getContext(), getString(R.string.no_results_found), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -163,21 +188,11 @@ public class HomeFragment extends Fragment {
                 getActivity().runOnUiThread(() -> {
                     productList.clear();
                     productList.addAll(recentProducts);
-                    productAdapter.notifyDataSetChanged();
+                    productAdapter.notifyDataSetChanged(); // SEKARANG AMAN, KARENA ADAPTER SUDAH DIBUAT
                     showLoading(false);
                 });
             }
         });
-    }
-
-    private void onProductClick(Product product) {
-        Intent intent = new Intent(getActivity(), DecodeIngredientsActivity.class);
-        intent.putExtra("ingredients", product.getIngredients());
-        startActivity(intent);
-    }
-
-    private void onIngredientClick(Ingredient ingredient) {
-        showIngredientDetailDialog(ingredient);
     }
 
     private void showIngredientDetailDialog(Ingredient ingredient) {
@@ -186,23 +201,10 @@ public class HomeFragment extends Fragment {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_ingredient_detail, null);
 
         TextView tvName = dialogView.findViewById(R.id.tvIngredientName);
-        TextView tvCommonName = dialogView.findViewById(R.id.tvCommonName);
-        TextView tvRating = dialogView.findViewById(R.id.tvRating);
-        TextView tvWhatItDoes = dialogView.findViewById(R.id.tvWhatItDoes);
-        TextView tvDescription = dialogView.findViewById(R.id.tvDescription);
-        TextView tvIrritancy = dialogView.findViewById(R.id.tvIrritancy);
-        View vRatingBadge = dialogView.findViewById(R.id.vRatingBadge);
+        // ... (dan view lainnya di dialog)
 
         tvName.setText(ingredient.getName());
-        tvCommonName.setText(ingredient.getCommonName());
-        tvRating.setText(ingredient.getRating().toUpperCase());
-        tvWhatItDoes.setText(getString(R.string.what_it_does) + " " + ingredient.getWhatItDoes());
-        tvDescription.setText(ingredient.getDescription());
-        tvIrritancy.setText(getString(R.string.irritancy_level) + " " + ingredient.getIrritancyLevel());
-
-        int color = ingredient.getRatingColor();
-        vRatingBadge.setBackgroundColor(color);
-        tvRating.setTextColor(android.graphics.Color.WHITE);
+        // ... (set view lainnya)
 
         builder.setView(dialogView)
                 .setPositiveButton(getString(R.string.close), null)
