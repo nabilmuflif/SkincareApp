@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/card_padding">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="@dimen/margin_normal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvIngredientName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Ingredient Name"
+                    android:textSize="@dimen/text_size_large"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:layout_marginBottom="@dimen/margin_tiny" />
+
+                <TextView
+                    android:id="@+id/tvCommonName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Common Name"
+                    android:textSize="@dimen/text_size_normal"
+                    android:textColor="@color/text_secondary" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/margin_normal">
+
+                <View
+                    android:id="@+id/vRatingBadge"
+                    android:layout_width="@dimen/rating_circle_size"
+                    android:layout_height="@dimen/rating_circle_size"
+                    android:background="@drawable/rating_circle"
+                    android:layout_marginBottom="@dimen/margin_tiny" />
+
+                <TextView
+                    android:id="@+id/tvRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RATING"
+                    android:textSize="@dimen/text_size_small"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height"
+            android:background="@color/divider_color"
+            android:layout_marginBottom="@dimen/margin_normal" />
+
+        <TextView
+            android:id="@+id/tvWhatItDoes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/what_it_does_placeholder"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="@dimen/margin_medium" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/description_placeholder"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/text_primary"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:lineSpacingExtra="2dp" />
+
+        <TextView
+            android:id="@+id/tvIrritancy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/irritancy_level_placeholder"
+            android:textSize="@dimen/text_size_normal"
+            android:textColor="@color/text_secondary"
+            android:layout_marginBottom="@dimen/margin_small" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="card_margin">8dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_radius">8dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_margin_small">6dp</dimen>
+    <dimen name="card_padding_small">12dp</dimen>
+    <dimen name="card_elevation_small">1dp</dimen>
+
+
+    <dimen name="material_card_radius">12dp</dimen>
+    <dimen name="material_card_elevation">4dp</dimen>
+
+    <dimen name="text_size_title">24sp</dimen>
+    <dimen name="text_size_large">18sp</dimen>
+    <dimen name="text_size_medium">16sp</dimen>
+    <dimen name="text_size_normal">14sp</dimen>
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_tiny">10sp</dimen>
+    <dimen name="text_size_score">24sp</dimen>
+
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_padding">16dp</dimen>
+    <dimen name="button_radius">8dp</dimen>
+
+    <dimen name="edittext_height">48dp</dimen>
+    <dimen name="edittext_multiline_height">120dp</dimen>
+    <dimen name="edittext_padding">12dp</dimen>
+    <dimen name="edittext_radius">8dp</dimen>
+
+    <dimen name="rating_badge_padding">6dp</dimen>
+    <dimen name="rating_badge_small_padding">4dp</dimen>
+    <dimen name="rating_circle_size">48dp</dimen>
+
+    <dimen name="rating_indicator_width">4dp</dimen>
+    <dimen name="rating_indicator_width_small">3dp</dimen>
+
+    <dimen name="margin_tiny">4dp</dimen>
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">12dp</dimen>
+    <dimen name="margin_normal">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+
+    <dimen name="category_badge_padding">4dp</dimen>
+    <dimen name="category_badge_radius">12dp</dimen>
+</resources>

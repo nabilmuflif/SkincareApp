@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/card_margin_small"
+    app:cardCornerRadius="@dimen/card_radius"
+    app:cardElevation="@dimen/card_elevation_small"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/card_padding_small">
+
+        <View
+            android:id="@+id/vRatingIndicator"
+            android:layout_width="@dimen/rating_indicator_width_small"
+            android:layout_height="match_parent"
+            android:background="@color/neutral_color"
+            android:layout_marginEnd="@dimen/margin_medium" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvIngredientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ingredient Name"
+                android:textSize="@dimen/text_size_normal"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="@dimen/margin_tiny" />
+
+            <TextView
+                android:id="@+id/tvWhatItDoes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="What it does"
+                android:textSize="@dimen/text_size_tiny"
+                android:textColor="@color/text_secondary" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RATING"
+            android:textSize="@dimen/text_size_tiny"
+            android:textStyle="bold"
+            android:textColor="@color/neutral_color"
+            android:background="@drawable/rating_badge_small"
+            android:padding="@dimen/rating_badge_small_padding"
+            android:layout_gravity="center_vertical" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
