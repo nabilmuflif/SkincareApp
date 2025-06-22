@@ -1,47 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">IncidDecoder</string>
+    <string name="app_name">Clariskin</string>
+
+    <string name="title_home">Home</string>
+    <string name="title_favorites">Favorit</string>
+    <string name="title_skincare">Skincare</string>
+    <string name="title_ingredients">Bahan</string>
+    <string name="toggle_favorite">Jadikan Favorit</string>
+    <string name="view_all">Lihat Semua</string>
+    <string name="close">Tutup</string>
+    <string name="rating">Rating</string>
 
     <string name="search_hint">Cari produk atau bahan...</string>
-    <string name="search_button">Cari</string>
-    <string name="decode_ingredients">Dekode Bahan</string>
-    <string name="all_ingredients">Semua Bahan</string>
-    <string name="products_section">Produk</string>
-    <string name="ingredients_section">Bahan-bahan</string>
-    <string name="search_empty_hint">Masukkan kata kunci pencarian</string>
-    <string name="search_products_ingredients_title">Cari Produk &amp; Bahan</string>
-    <string name="no_results_found">Tidak ada hasil ditemukan</string>
+    <string name="search_button">Cari Sekarang</string>
+    <string name="decode_ingredients">🔬 Analisis Bahan</string>
+    <string name="add_new_ingredient">🧪 Tambah Bahan Baru</string>
+    <string name="add_new_product">✨ Tambah Produk Baru</string>
+    <string name="recent_products_title">Produk Terbaru</string>
+    <string name="search_empty_hint">Masukkan kata kunci pencarian.</string>
+    <string name="no_results_found">Tidak ada hasil yang ditemukan.</string>
 
-
-    <string name="decode_title">Dekode Bahan</string>
     <string name="paste_ingredients">Tempel daftar bahan Anda</string>
-    <string name="ingredients_hint">Pisahkan bahan dengan koma, titik koma, atau baris baru</string>
-    <string name="ingredients_example">Contoh: Aqua, Niacinamide, Glycerin, Azelaic Acid...</string>
-    <string name="analyze_button">Analisis Bahan</string>
+    <string name="ingredients_hint">Pisahkan bahan dengan koma, titik koma, atau baris baru.</string>
+    <string name="ingredients_example">Contoh: Aqua, Niacinamide, Glycerin...</string>
+    <string name="analyze_button">Analisis</string>
     <string name="analyzing">Menganalisis...</string>
     <string name="clear_button">Bersihkan</string>
     <string name="analysis_results">Hasil Analisis</string>
-    <string name="overall_score">Skor Keseluruhan:</string>
-    <string name="analysis_cleared">Analisis dibersihkan</string>
-    <string name="enter_ingredients_message">Masukkan daftar bahan untuk dianalisis</string>
+    <string name="overall_score">Skor Keseluruhan</string>
+    <string name="analysis_cleared">Analisis dibersihkan.</string>
+    <string name="enter_ingredients_message">Masukkan daftar bahan untuk dianalisis.</string>
 
     <string name="superstar">Superstar</string>
     <string name="goodie">Goodie</string>
-    <string name="no_take">No-take</string>
+    <string name="no_take">Perlu Perhatian</string>
     <string name="neutral">Netral</string>
-
-    <string name="close">Tutup</string>
-    <string name="what_it_does">Apa fungsinya:</string>
-    <string name="irritancy_level">Tingkat iritasi:</string>
-    <string name="what_it_does_placeholder">Apa fungsinya: bahan pengkomunikasi sel</string>
-    <string name="description_placeholder">Deskripsi bahan dan efeknya pada kulit</string>
-    <string name="irritancy_level_placeholder">Tingkat iritasi: rendah</string>
-
-
     <string name="excellent">Sangat Baik</string>
     <string name="good">Baik</string>
     <string name="fair">Cukup</string>
     <string name="poor">Buruk</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="what_it_does">Fungsi utama:</string>
+    <string name="irritancy_level">Tingkat iritasi:</string>
+    <string name="what_it_does_placeholder">Fungsi utama tidak tersedia.</string>
+    <string name="description_placeholder">Deskripsi tidak tersedia.</string>
+    <string name="irritancy_level_placeholder">Tingkat iritasi tidak diketahui.</string>
+
+    <string name="empty_favorites">Anda belum memiliki item favorit.</string>
+
+    <string name="error_name_brand_empty">Nama dan Merek tidak boleh kosong!</string>
+    <string name="error_name_rating_empty">Nama dan Rating tidak boleh kosong!</string>
 </resources>

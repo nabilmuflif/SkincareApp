@@ -87,11 +87,7 @@
     <dimen name="divider_height">1dp</dimen>
     <dimen name="divider_thick">2dp</dimen>
 
-    <!-- Categories & badges */
-    <dimen name="category_badge_padding">8dp</dimen>
-    <dimen name="category_badge_radius">16dp</dimen>
 
-    <!-- Bottom navigation -->
     <dimen name="bottom_nav_height">80dp</dimen>
     <dimen name="bottom_nav_elevation">8dp</dimen>
 

@@ -36,17 +36,11 @@
                 android:paddingTop="48dp"
                 app:layout_collapseMode="parallax">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:src="@drawable/ic_clari_skin_logo"
-                    android:layout_marginBottom="12dp"
-                    app:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clari Skin"
+                    android:text="ClariSkin"
                     android:textSize="28sp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
@@ -112,7 +106,7 @@
                         <ImageView
                             android:layout_width="28dp"
                             android:layout_height="28dp"
-                            android:src="@drawable/ic_ingredients"
+                            android:src="@drawable/ic_ingredient"
                             android:layout_marginEnd="12dp"
                             app:tint="?attr/colorPrimary" />
 
@@ -192,7 +186,7 @@
                             android:textSize="14sp"
                             android:textStyle="bold"
                             app:cornerRadius="24dp"
-                            app:icon="@drawable/ic_analyze"
+                            app:icon="@drawable/ic_search"
                             app:iconGravity="textStart"
                             android:minWidth="120dp" />
 
@@ -221,7 +215,7 @@
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_analytics"
+                        android:src="@drawable/ic_search"
                         android:layout_marginEnd="8dp"
                         app:tint="?attr/colorPrimary" />
 
@@ -489,7 +483,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:text="Analisis Cepat"
-        app:icon="@drawable/ic_quick_analyze"
+        app:icon="@drawable/ic_search"
         app:backgroundTint="?attr/colorSecondaryContainer"
         app:iconTint="?attr/colorOnSecondaryContainer"
         android:textColor="?attr/colorOnSecondaryContainer"

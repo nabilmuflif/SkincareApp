@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="text"
                         android:textSize="16sp"
-                        android:drawableStart="@drawable/ic_search_24"
+                        android:drawableStart="@drawable/ic_search"
                         android:drawablePadding="12dp"
                         android:drawableTint="#999999" />
 
@@ -96,7 +96,7 @@
                     app:elevation="0dp"
                     android:layout_marginBottom="12dp"
                     app:iconGravity="textStart"
-                    app:icon="@drawable/ic_search_24"
+                    app:icon="@drawable/ic_search"
                     app:iconTint="#2c2c2c" />
 
                 <com.google.android.material.button.MaterialButton

@@ -41,25 +41,31 @@ public class AnalysisResultAdapter extends RecyclerView.Adapter<AnalysisResultAd
         return ingredients.size();
     }
 
+    // --- KELAS VIEWHOLDER YANG DIPERBAIKI ---
     static class AnalysisViewHolder extends RecyclerView.ViewHolder {
+        // Deklarasi variabel view tetap sama
         private TextView tvIngredientName, tvRating, tvWhatItDoes;
         private View vRatingIndicator;
 
         public AnalysisViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvIngredientName = itemView.findViewById(R.id.tvIngredientName);
-            tvRating = itemView.findViewById(R.id.tvRating);
-            tvWhatItDoes = itemView.findViewById(R.id.tvWhatItDoes);
-            vRatingIndicator = itemView.findViewById(R.id.vRatingIndicator);
+            // Inisialisasi view dengan ID yang BENAR dari file XML
+            tvIngredientName = itemView.findViewById(R.id.tv_ingredient_name);
+            tvRating = itemView.findViewById(R.id.tv_rating_value); // ID di XML adalah tv_rating_value
+            tvWhatItDoes = itemView.findViewById(R.id.tv_ingredient_function); // ID di XML adalah tv_ingredient_function
+            vRatingIndicator = itemView.findViewById(R.id.v_rating_indicator); // ID di XML adalah v_rating_indicator
         }
 
-        public void bind(Ingredient ingredient, OnIngredientClickListener listener) {
+        public void bind(final Ingredient ingredient, final OnIngredientClickListener listener) {
             tvIngredientName.setText(ingredient.getName());
             tvRating.setText(ingredient.getRating().toUpperCase());
             tvWhatItDoes.setText(ingredient.getWhatItDoes());
 
             int color = ingredient.getRatingColor();
+            // Anda mungkin perlu menyesuaikan TextView mana yang diwarnai.
+            // Berdasarkan layout, sepertinya tvRating (tv_rating_value) yang seharusnya diwarnai.
             tvRating.setTextColor(color);
+
             vRatingIndicator.setBackgroundColor(color);
 
             itemView.setOnClickListener(v -> {

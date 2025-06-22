@@ -92,7 +92,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    app:startIconDrawable="@drawable/ic_label"
                     app:startIconTint="?attr/colorPrimary"
                     android:layout_marginBottom="16dp"
                     android:hint="Nama Bahan">
@@ -113,7 +112,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    app:startIconDrawable="@drawable/ic_public"
                     app:startIconTint="?attr/colorPrimary"
                     android:layout_marginBottom="24dp"
                     android:hint="Nama Umum">
@@ -130,7 +128,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Penilaian & Fungsi"
+                    android:text="Penilaian dan Fungsi"
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="?attr/colorOnSurface"
@@ -145,8 +143,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    app:startIconDrawable="@drawable/ic_star"
-                    app:startIconTint="?attr/colorPrimary"
                     app:helperText="Contoh: goodie, superstar, workhorse"
                     app:helperTextTextColor="?attr/colorOnSurfaceVariant"
                     android:layout_marginBottom="16dp"
@@ -168,7 +164,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    app:startIconDrawable="@drawable/ic_function"
                     app:startIconTint="?attr/colorPrimary"
                     android:layout_marginBottom="16dp"
                     android:hint="Fungsi Utama">
@@ -189,7 +184,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    app:startIconDrawable="@drawable/ic_warning"
                     app:startIconTint="?attr/colorPrimary"
                     app:helperText="Tingkat 1-5 atau deskripsi singkat"
                     app:helperTextTextColor="?attr/colorOnSurfaceVariant"
@@ -223,7 +217,6 @@
                     app:boxCornerRadiusTopEnd="12dp"
                     app:boxCornerRadiusBottomStart="12dp"
                     app:boxCornerRadiusBottomEnd="12dp"
-                    app:startIconDrawable="@drawable/ic_description"
                     app:startIconTint="?attr/colorPrimary"
                     app:counterEnabled="true"
                     app:counterMaxLength="500"

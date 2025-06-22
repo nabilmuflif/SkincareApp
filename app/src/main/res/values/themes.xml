@@ -1,54 +1,44 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme with Material 3 -->
     <style name="Base.Theme.MA" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Primary colors -->
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorOnPrimary">@color/on_primary</item>
         <item name="colorPrimaryContainer">@color/primary_light</item>
         <item name="colorOnPrimaryContainer">@color/on_primary</item>
 
-        <!-- Secondary colors -->
         <item name="colorSecondary">@color/secondary_color</item>
         <item name="colorOnSecondary">@color/on_secondary</item>
         <item name="colorSecondaryContainer">@color/secondary_light</item>
         <item name="colorOnSecondaryContainer">@color/on_primary</item>
 
-        <!-- Surface colors -->
         <item name="colorSurface">@color/surface</item>
         <item name="colorOnSurface">@color/text_primary</item>
         <item name="colorSurfaceVariant">@color/surface_variant</item>
         <item name="colorOnSurfaceVariant">@color/text_secondary</item>
 
-        <!-- Background -->
         <item name="android:colorBackground">@color/background_color</item>
         <item name="colorOnBackground">@color/text_primary</item>
 
-        <!-- Status bar -->
         <item name="android:statusBarColor">@color/primary_color</item>
         <item name="android:windowLightStatusBar">true</item>
 
-        <!-- Navigation bar -->
         <item name="android:navigationBarColor">@color/surface</item>
 
-        <!-- Other colors -->
         <item name="colorError">@color/error_color</item>
         <item name="colorOnError">@color/white</item>
 
-        <!-- Material components styling -->
         <item name="materialCardViewStyle">@style/Widget.App.CardView</item>
         <item name="textInputStyle">@style/Widget.App.TextInputLayout</item>
         <item name="materialButtonStyle">@style/Widget.App.Button</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <style name="Theme.MA" parent="Base.Theme.MA" />
 
-    <!-- Splash Theme -->
     <style name="Theme.MA.Splash" parent="Theme.MA">
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:statusBarColor">@color/splash_background</item>
     </style>
 
-    <!-- Custom Card Style -->
     <style name="Widget.App.CardView" parent="Widget.Material3.CardView.Elevated">
         <item name="cardCornerRadius">16dp</item>
         <item name="cardElevation">4dp</item>
@@ -56,7 +46,6 @@
         <item name="rippleColor">@color/ripple_color</item>
     </style>
 
-    <!-- Custom Button Styles -->
     <style name="Widget.App.Button" parent="Widget.Material3.Button">
         <item name="backgroundTint">@color/primary_color</item>
         <item name="android:textColor">@color/on_primary</item>
@@ -67,21 +56,6 @@
         <item name="rippleColor">@color/ripple_color</item>
     </style>
 
-    <style name="Widget.App.Button.Outlined" parent="Widget.Material3.Button.OutlinedButton">
-        <item name="strokeColor">@color/primary_color</item>
-        <item name="android:textColor">@color/primary_color</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="strokeWidth">2dp</item>
-        <item name="rippleColor">@color/ripple_color</item>
-    </style>
-
-    <style name="Widget.App.Button.Text" parent="Widget.Material3.Button.TextButton">
-        <item name="android:textColor">@color/primary_color</item>
-        <item name="cornerRadius">12dp</item>
-        <item name="rippleColor">@color/ripple_color</item>
-    </style>
-
-    <!-- Custom TextInputLayout -->
     <style name="Widget.App.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxStrokeColor">@color/input_stroke_focused</item>
         <item name="boxStrokeWidth">2dp</item>
@@ -93,21 +67,12 @@
         <item name="android:textColorHint">@color/text_hint</item>
     </style>
 
-    <!-- Bottom Navigation Style -->
     <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
-        <item name="itemIconTint">@color/bottom_nav_color</item>
-        <item name="itemTextColor">@color/bottom_nav_color</item>
+        <item name="itemIconTint">@color/bottom_nav_color_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_color_selector</item>
         <item name="android:background">@color/surface</item>
         <item name="elevation">8dp</item>
         <item name="itemRippleColor">@color/ripple_color</item>
     </style>
 
-    <!-- FAB Style -->
-    <style name="Widget.App.FloatingActionButton" parent="Widget.Material3.FloatingActionButton.Primary">
-        <item name="backgroundTint">@color/primary_color</item>
-        <item name="tint">@color/on_primary</item>
-        <item name="elevation">6dp</item>
-        <item name="hoveredFocusedTranslationZ">8dp</item>
-        <item name="pressedTranslationZ">12dp</item>
-    </style>
 </resources>
