@@ -1,60 +1,82 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="4dp">
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="20dp">
 
+        <!-- Modern accent bar with rounded corners -->
         <View
             android:id="@+id/v_rating_indicator"
-            android:layout_width="5dp"
+            android:layout_width="4dp"
             android:layout_height="0dp"
-            android:background="@color/primary_light"
+            android:background="@drawable/rating_indicator_bg"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_ingredient_name"
+        <!-- Main content container -->
+        <LinearLayout
+            android:id="@+id/content_container"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            tools:text="Ingredient Name"
-            android:textColor="@color/text_primary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/btnFavoriteIngredient"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/btn_favorite_ingredient"
             app:layout_constraintStart_toEndOf="@id/v_rating_indicator"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_ingredient_function"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="What it does for your skin"
-            android:textColor="@color/text_secondary"
-            android:textSize="14sp"
-            android:layout_marginTop="2dp"
-            app:layout_constraintEnd_toEndOf="@id/tv_ingredient_name"
-            app:layout_constraintStart_toStartOf="@id/tv_ingredient_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_ingredient_name" />
+            <TextView
+                android:id="@+id/tv_ingredient_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/inter_semibold"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="2dp"
+                android:textColor="@color/text_primary"
+                android:textSize="16sp"
+                tools:text="Hyaluronic Acid" />
 
-        <ImageButton
-            android:id="@+id/btnFavoriteIngredient"
+            <TextView
+                android:id="@+id/tv_ingredient_function"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inter_regular"
+                android:letterSpacing="0.005"
+                android:lineSpacingExtra="1dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                tools:text="Deeply hydrates and plumps skin" />
+
+        </LinearLayout>
+
+        <!-- Modern favorite button with better touch target -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_favorite_ingredient"
+            style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_star_selector"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Toggle Favorite"
+            android:layout_marginStart="12dp"
+            android:contentDescription="@string/toggle_favorite"
+            app:icon="@drawable/ic_favorite_24"
+            app:iconSize="24dp"
+            app:iconTint="@color/favorite_icon_tint"
+            app:layout_constraintBottom_toBottomOf="@id/content_container"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="@id/content_container" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

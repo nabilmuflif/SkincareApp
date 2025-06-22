@@ -1,67 +1,107 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/card_margin_small"
-    app:cardCornerRadius="@dimen/card_radius"
-    app:cardElevation="@dimen/card_elevation_small"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="0dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/card_padding_small">
+        android:padding="20dp">
 
+        <!-- Modern accent indicator -->
         <View
-            android:id="@+id/vRatingIndicator"
-            android:layout_width="@dimen/rating_indicator_width_small"
-            android:layout_height="match_parent"
-            android:background="@color/neutral_color"
-            android:layout_marginEnd="@dimen/margin_medium" />
+            android:id="@+id/v_rating_indicator"
+            android:layout_width="4dp"
+            android:layout_height="0dp"
+            android:background="@drawable/rating_indicator_bg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Content section -->
         <LinearLayout
+            android:id="@+id/content_section"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toStartOf="@+id/rating_container"
+            app:layout_constraintStart_toEndOf="@id/v_rating_indicator"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/tvIngredientName"
+                android:id="@+id/tv_ingredient_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ingredient Name"
-                android:textSize="@dimen/text_size_normal"
-                android:textStyle="bold"
+                android:fontFamily="@font/inter_semibold"
+                android:letterSpacing="0.01"
+                android:lineSpacingExtra="2dp"
                 android:textColor="@color/text_primary"
-                android:layout_marginBottom="@dimen/margin_tiny" />
+                android:textSize="16sp"
+                tools:text="Retinol" />
 
             <TextView
-                android:id="@+id/tvWhatItDoes"
+                android:id="@+id/tv_ingredient_function"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="What it does"
-                android:textSize="@dimen/text_size_tiny"
-                android:textColor="@color/text_secondary" />
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/inter_regular"
+                android:letterSpacing="0.005"
+                android:lineSpacingExtra="1dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp"
+                tools:text="Reduces fine lines and improves texture" />
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvRating"
+        <!-- Modern rating badge -->
+        <LinearLayout
+            android:id="@+id/rating_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="RATING"
-            android:textSize="@dimen/text_size_tiny"
-            android:textStyle="bold"
-            android:textColor="@color/neutral_color"
-            android:background="@drawable/rating_badge_small"
-            android:padding="@dimen/rating_badge_small_padding"
-            android:layout_gravity="center_vertical" />
+            android:layout_marginStart="16dp"
+            android:background="@drawable/modern_rating_badge_bg"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/content_section"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/content_section">
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tv_rating_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/rating_text_color"
+                android:textSize="16sp"
+                tools:text="4.5" />
+
+            <TextView
+                android:id="@+id/tv_rating_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/inter_medium"
+                android:text="@string/rating"
+                android:textAllCaps="true"
+                android:textColor="@color/rating_label_color"
+                android:textSize="10sp"
+                android:letterSpacing="0.1" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>

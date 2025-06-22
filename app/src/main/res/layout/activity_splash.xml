@@ -4,20 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/splash_background"
+    android:background="@drawable/splash_gradient_background"
     tools:context=".SplashActivity">
 
+    <!-- Background decoration circles -->
+    <View
+        android:id="@+id/circle_decoration_1"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:alpha="0.1"
+        android:background="@drawable/circle_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="-50dp"
+        android:layout_marginEnd="-50dp" />
+
+    <View
+        android:id="@+id/circle_decoration_2"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:alpha="0.08"
+        android:background="@drawable/circle_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="-30dp"
+        android:layout_marginBottom="-30dp" />
+
+    <!-- App logo/icon container -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/logo_container"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@id/text_clariskin_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginBottom="@dimen/spacing_xxxl">
+
+        <!-- Replace with your app icon -->
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_skincare"
+            android:tint="@color/primary_color"
+            android:contentDescription="@string/app_name" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- App name -->
     <TextView
         android:id="@+id/text_clariskin_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Clariskin"
-        android:textColor="@color/text_primary"
-        android:textSize="48sp"
+        android:textColor="@color/splash_text"
+        android:textSize="@dimen/text_size_headline_large"
         android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.02"
+        app:layout_constraintBottom_toTopOf="@id/text_tagline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo_container"
+        android:layout_marginBottom="@dimen/spacing_sm" />
+
+    <!-- App tagline -->
+    <TextView
+        android:id="@+id/text_tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Skincare Analysis Made Simple"
+        android:textColor="@color/text_secondary"
+        android:textSize="@dimen/text_size_body_medium"
+        android:fontFamily="sans-serif"
+        android:alpha="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/text_clariskin_1" />
+
+    <!-- Loading indicator -->
+    <ProgressBar
+        android:id="@+id/progress_loading"
+        android:layout_width="@dimen/progress_size"
+        android:layout_height="@dimen/progress_size"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/primary_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/spacing_xxxl"
+        android:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

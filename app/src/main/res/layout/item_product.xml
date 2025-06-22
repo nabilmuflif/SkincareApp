@@ -1,20 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
+    android:layout_marginBottom="12dp"
     android:clickable="true"
     android:focusable="true"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="#ffffff"
     android:foreground="?android:attr/selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="20dp"
         android:gravity="center_vertical">
 
+        <!-- Product Icon/Avatar -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#f8f6f1"
+            android:layout_marginEnd="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="🧴"
+                android:textSize="28sp"
+                android:gravity="center" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Product Info -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -26,8 +50,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Product Name"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="#2c2c2c"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="2"
+                android:ellipsize="end"
+                tools:text="Cerave Hydrating Foaming Oil Cleanser" />
 
             <TextView
                 android:id="@+id/tvBrand"
@@ -35,16 +64,63 @@
                 android:layout_height="wrap_content"
                 android:text="Brand"
                 android:textSize="14sp"
-                android:layout_marginTop="2dp"/>
+                android:textColor="#8B7355"
+                android:layout_marginTop="4dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="CeraVe" />
+
+            <!-- Rating or Category Badge -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/tvCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cleanser"
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:background="@drawable/category_badge_background"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    tools:text="Cleanser" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/btnFavoriteProduct"
+        <!-- Favorite Button with Animation -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:src="@drawable/ic_star_selector"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Toggle Favorite"/>
+            app:cardCornerRadius="24dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#f8f6f1"
+            android:layout_marginStart="12dp">
+
+            <ImageButton
+                android:id="@+id/btnFavoriteProduct"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_star_selector"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Toggle Favorite"
+                android:scaleType="center"
+                app:tint="#e7decd" />
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
+
+    <!-- Subtle Shadow/Gradient at Bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/subtle_bottom_gradient"
+        android:layout_gravity="bottom" />
+
 </com.google.android.material.card.MaterialCardView>

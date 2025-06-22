@@ -11,139 +11,285 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
         tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Hero Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Skincare Analyzer"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary" />
+            android:orientation="vertical"
+            android:background="@drawable/gradient_hero_background"
+            android:padding="24dp"
+            android:paddingBottom="32dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Analyze ingredients or search for products."
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✨ Clariskin"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:textColor="#2c2c2c"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="4dp" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your skincare companion for better choices"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:alpha="0.8" />
+
+        </LinearLayout>
+
+        <!-- Search Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="24dp">
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="-16dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#ffffff">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="24dp">
 
-                <EditText
-                    android:id="@+id/etSearch"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:hint="Search for products or ingredients..."
-                    android:inputType="text"
-                    android:background="@drawable/edittext_background"
-                    android:paddingHorizontal="16dp"
-                    android:layout_marginBottom="12dp"/>
-
-                <Button
-                    android:id="@+id/btnSearch"
-                    style="@style/Widget.MaterialComponents.Button"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Search"
-                    android:backgroundTint="@color/primary_color"/>
+                    android:hint="Search products or ingredients..."
+                    app:boxCornerRadiusTopStart="16dp"
+                    app:boxCornerRadiusTopEnd="16dp"
+                    app:boxCornerRadiusBottomStart="16dp"
+                    app:boxCornerRadiusBottomEnd="16dp"
+                    app:boxStrokeColor="#e7decd"
+                    app:hintTextColor="#999999"
+                    android:layout_marginBottom="16dp">
 
-                <Button
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSearch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textSize="16sp"
+                        android:drawableStart="@drawable/ic_search_24"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="#999999" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:text="Search Now"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="#e7decd"
+                    app:cornerRadius="16dp"
+                    android:textColor="#2c2c2c"
+                    app:elevation="0dp"
+                    android:layout_marginBottom="12dp"
+                    app:iconGravity="textStart"
+                    app:icon="@drawable/ic_search_24"
+                    app:iconTint="#2c2c2c" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnDecodeIngredients"
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Analyze Ingredient List"
-                    android:textColor="@color/primary_dark" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="16dp">
-
-                    <Button
-                        android:id="@+id/btnAddIngredient"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tambah Bahan"
-                        android:textColor="@color/primary_dark"
-                        app:strokeColor="@color/primary_dark"
-                        android:layout_marginEnd="8dp"/>
-
-                    <Button
-                        android:id="@+id/btnAddSkincare"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Tambah Skincare"
-                        android:textColor="@color/primary_dark"
-                        app:strokeColor="@color/primary_dark"
-                        android:layout_marginStart="8dp"/>
-                </LinearLayout>
+                    android:layout_height="48dp"
+                    android:text="🔬 Analyze Ingredients"
+                    android:textSize="15sp"
+                    android:textColor="#8B7355"
+                    app:cornerRadius="12dp"
+                    android:background="@drawable/ripple_background"
+                    app:rippleColor="#e7decd" />
 
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <!-- Quick Actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="20dp">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#f8f6f1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:id="@+id/btnAddIngredient"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🧪"
+                        android:textSize="28sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Ingredient"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#2c2c2c"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="#f8f6f1"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:id="@+id/btnAddSkincare"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="✨"
+                        android:textSize="28sp"
+                        android:layout_marginBottom="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Product"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#2c2c2c"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:indeterminateTint="#e7decd"
             android:visibility="gone" />
 
-        <TextView
-            android:id="@+id/tvRecentProductsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Recent Products"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProducts"
+        <!-- Recent Products Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            tools:listitem="@layout/item_product" />
+            android:orientation="vertical"
+            android:layout_marginTop="24dp"
+            android:paddingHorizontal="20dp">
 
-        <TextView
-            android:id="@+id/tvIngredientsTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Ingredients Results"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
-            android:visibility="gone" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvIngredients"
+                <TextView
+                    android:id="@+id/tvRecentProductsTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent Products"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="#2c2c2c"
+                    android:fontFamily="sans-serif-medium" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    android:textSize="14sp"
+                    android:textColor="#8B7355"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="8dp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProducts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_product" />
+
+        </LinearLayout>
+
+        <!-- Ingredients Results Section -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:visibility="gone"
-            tools:listitem="@layout/item_ingredient" />
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:paddingHorizontal="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/tvIngredientsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredients Results"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#2c2c2c"
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="12dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/item_ingredient" />
+
+        </LinearLayout>
+
+        <!-- Bottom Spacing -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
